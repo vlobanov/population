@@ -7,4 +7,5 @@
                  [com.taoensso/timbre "4.1.1"]]
   :main ^:skip-aot population.core
   :target-path "target/%s"
+  :jvm-opts ["-Xmx4g"]
   :profiles {:uberjar {:aot :all}})
