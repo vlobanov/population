@@ -67,9 +67,6 @@
       (assert (= (count (first data))
                  (:cols description))))))
 
-(defn test-case [city-name lat lng expected-density]
-  (let []))
-
 (defn latitude->row-index
   "latitude is between -90 and 90,
    first row is at the bottom of the grid,
