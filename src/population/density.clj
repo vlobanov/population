@@ -8,7 +8,7 @@
 (defonce density-description (atom {}))
 (defonce density-data (atom []))
 
-(def not-found-flag -1)
+(def earth-r-km 6371)
 
 (defn- read-ascii-density-file-data
   "reads lines, splits by space and converts to vector of vectors"
@@ -18,7 +18,7 @@
               (->> (.split line " ")
                    vec
                    (mapv #(if (= % nodata-flag)
-                              not-found-flag
+                              0.0
                               (Double. %)))))
             lines)))
 
@@ -67,6 +67,56 @@
       (assert (= (count (first data))
                  (:cols description))))))
 
-; (defn latitude->index )
+(defn test-case [city-name lat lng expected-density]
+  (let []))
+
+(defn latitude->row-index
+  "latitude is between -90 and 90,
+   so row index = ((latitude - yllcorner) / cellsize)"
+  [latitude]
+  (let [{:keys [cell-size y-corner rows]} @density-description]
+    (- rows
+       (long (/ (- latitude y-corner)
+                 cell-size)))))
+
+(defn longtitude->column-index
+  "longtitude is between -180 and 180,
+   so column index = ((longtitude - xllcorner) / cellsize)"
+  [longtitude]
+  (let [{:keys [cell-size x-corner]} @density-description]
+    (log/info [cell-size x-corner])
+    (long (/ (- longtitude x-corner)
+             cell-size))))
+
+(defn cell-surface-area [latitude]
+  (let [k (-> latitude
+              (+ 90.0)
+              Math/toRadians
+              Math/sin)
+        c-s (* (/ (:cell-size @density-description)
+                  180.0)
+                Math/PI
+                earth-r-km)]
+    (* c-s c-s k)))
+
+; (defn coverage-s [km lat]
+;   (let [a (Math/sqrt km)
+;         n (/ a
+;              (cell-surface-area lat))]
+;     (log/info "n=" n)
+;     (int (/ n 2))))
+
+; (defn at [lat longt km]
+;   (let [r (latitude->row-index lat)
+;         c (longtitude->column-index longt)
+;         d (coverage-s km lat)
+;         rg (range (- d) (+ d 1))]
+;     (mapv
+;       (fn [x]
+;           (mapv
+;             (fn [y]
+;               (get-in @density-data [(+ x r) (+ y c)]))
+;             rg))
+;       rg)))
 
 ; (defn find-density-at [latitude longtitude])
