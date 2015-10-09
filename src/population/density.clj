@@ -72,7 +72,8 @@
 
 (defn latitude->row-index
   "latitude is between -90 and 90,
-   so row index = ((latitude - yllcorner) / cellsize)"
+   first row is at the bottom of the grid,
+   so row index = (Nrows - (latitude - yllcorner) / cellsize)"
   [latitude]
   (let [{:keys [cell-size y-corner rows]} @density-description]
     (- rows
@@ -84,11 +85,13 @@
    so column index = ((longtitude - xllcorner) / cellsize)"
   [longtitude]
   (let [{:keys [cell-size x-corner]} @density-description]
-    (log/info [cell-size x-corner])
     (long (/ (- longtitude x-corner)
              cell-size))))
 
-(defn cell-surface-area [latitude]
+(defn cell-surface-area
+  "we know size of grid cell in degrees,
+   but may need to get its surface area"
+  [latitude]
   (let [k (-> latitude
               (+ 90.0)
               Math/toRadians
