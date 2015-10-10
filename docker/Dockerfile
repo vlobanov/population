@@ -54,7 +54,7 @@ RUN  \
     echo "create database population" | mysql && \
     cat /data/sql_cities_init.sql | mysql -D population
 
-RUN echo "/etc/init.d/mysql start && java -jar target/uberjar/population-0.1.0-SNAPSHOT-standalone.jar" > entry.sh && \
+RUN echo "/etc/init.d/mysql start && java -Xmx4g -jar target/uberjar/population-0.1.0-SNAPSHOT-standalone.jar" > entry.sh && \
     chmod +x entry.sh
 
 ENV DB_URL "jdbc:mysql://localhost/population"
