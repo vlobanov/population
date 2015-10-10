@@ -1,36 +1,15 @@
-# population
+Population radar
+================
 
-FIXME: description
+Demo:
 
-## Installation
+[Mumbai 30 km](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=Mumbai&radius=12)
+[nl, amsterdam 12 km](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=nl,amsterdam&radius=12)
+[us, NY, new york 300 km](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=us,NY,new%20york&radius=300)
 
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar population-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2015 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Launching:
+Install Docker, then exec:
+`wget https://raw.githubusercontent.com/vlobanov/population/master/docker/Dockerfile`
+`docker build -t lobanovadik/population .`
+`docker run -p 80:8080 -it lobanovadik/population`
+(or replace `80` with any port for service to listen on)
