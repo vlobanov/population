@@ -19,8 +19,9 @@
                      region
                      city)))
 
-(defn find-place [search-str]
+(defn find-city [search-str]
   (match (string/split search-str #",")
          [city] (find-city-by city)
          [country city] (find-city-by country city)
-         [country region city] (find-city-by country region city)))
+         [country region city] (find-city-by country region city)
+         :else :not-recognized-search))

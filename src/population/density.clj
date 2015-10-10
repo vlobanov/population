@@ -10,6 +10,8 @@
 
 (def earth-r-km 6371)
 
+(def max-radius 500)
+
 (defn- read-ascii-density-file-data
   "reads lines, splits by space and converts to vector of vectors"
   [nodata-flag lines]
