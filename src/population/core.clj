@@ -36,7 +36,7 @@
       (if (not-empty city-search)
           (get-population-with-radius city-search radius)
           [:error "city is incorrect"])
-      [:error ("radius must be less than " density/max-radius " km")])
+      [:error (str "radius must be less than " density/max-radius " km")])
     [:error "radius is incorrect"]))
 
 (defn json [status data]
