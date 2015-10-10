@@ -57,5 +57,9 @@ RUN  \
 RUN echo "/etc/init.d/mysql start && java -jar target/uberjar/population-0.1.0-SNAPSHOT-standalone.jar" > entry.sh && \
     chmod +x entry.sh
 
+ENV DB_URL "jdbc:mysql://localhost/population"
+ENV DB_USER "root"
+ENV DB_PASSWORD ""
+
 EXPOSE 8080
 ENTRYPOINT exec ./entry.sh
