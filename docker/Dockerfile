@@ -58,4 +58,4 @@ RUN echo "/etc/init.d/mysql start && java -jar target/uberjar/population-0.1.0-S
     chmod +x entry.sh
 
 EXPOSE 8080
-# ENTRYPOINT exec ./entry.sh
+ENTRYPOINT exec ./entry.sh
