@@ -60,4 +60,4 @@
   (density/read-ascii-density-file! "data/glds15ag.asc")
   (-> app
       wrap-params
-      run))
+      (run {"host" "0.0.0.0"})))
