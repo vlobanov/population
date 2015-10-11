@@ -159,12 +159,14 @@ return population;
 Both files can be downloaded [from S3](https://s3.amazonaws.com/felixlotok/d.tar.gz)
 
 Pros:
+
 1. Accuracy doesn't depend on city shape
 2. Accuracy doesn't depend on unknown villages around, as long as they're counted on the grid
 3. Can be used not only for cities, but for any point on the map
 4. City DB and population density DB are decoupled
 
 Cons:
+
 1. Hard to debug (grid is 2D array, not really human friendly)
 2. There is only one source of such grid, NASA.
 
