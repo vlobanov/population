@@ -121,6 +121,7 @@ How the measurement _is_ done
 ----
 
 Instead of counting population by cities, [population density grid](http://sedac.ciesin.columbia.edu/data/set/gpw-v3-population-density-future-estimates/data-download) is used. Population counting:
+
 1. City centre coordinates are looked up in some DB
 2. Grid is queried for all cells around that fall into given range (e.g. 30km)
 3. Cells are sorted by distance to city centre (with respect to cell shape distortion on given latitude)
