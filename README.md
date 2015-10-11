@@ -193,6 +193,17 @@ Extending data
 
 Both city DB and density grid cover the whole world, so no extending is needed. Maxmind gives a warning that city DB is outdated, but then how often do cities change their coordinates?
 
+Accuracy
+----
+
+Grid cell has area of about 20km<sup>2</sup> on equator, so roughly 5km in width and height.
+
+If radius is much smaller than 5km, the circle in question is fully covered by some grid cell and result is a close approximation, because density does not change much in this area.
+
+If radius is much greater than 5km (e.g. 100km), the circle covers many cells and again it gives close approximation because then percentage of cells on border of circle is small and estimation has roughly same accurasy as grid (can't do better anyway).
+
+The worst accuracy is when radius is close to 5km, a bit greater like 10km. Then the circle covers several cells that may have different densities but it's hard to tell which one is closer.
+
 Bonus
 ----
 As US didn't bother to make up city names, there are 22 cities named Moscow in US. The app will give you a hint on how to specify which city you need:
