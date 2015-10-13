@@ -4,11 +4,9 @@ Population radar
 Demo
 ----
 
-**[Population within 10km of nowhere](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=nowhere&radius=10)**
+Mumbai 30 km `GET /city/population?city=Mumbai&radius=12`
 
-[Mumbai 30 km](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=Mumbai&radius=12)
-
-```
+```json
 {
   "population": 10290537,
   "radius": 12,
@@ -23,9 +21,9 @@ Demo
 }
 ```
 
-[nl, Amsterdam 12 km](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=nl,amsterdam&radius=12)
+nl, Amsterdam 12 km `GET /city/population?city=nl,amsterdam&radius=12`
 
-```
+```json
 {
   "population": 848471,
   "radius": 12,
@@ -40,9 +38,9 @@ Demo
 }
 ```
 
-[us, NY, New York 300 km](http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=us,NY,new%20york&radius=300)
+us, NY, New York 300 km `GET /city/population?city=us,NY,new%20york&radius=300`
 
-```
+```json
 {
   "population": 51267817,
   "radius": 300,
@@ -210,9 +208,8 @@ Bonus
 ----
 As US didn't bother to make up city names, there are 22 cities named Moscow in US. The app will give you a hint on how to specify which city you need:
 
-```
-http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=Moscow&radius=12:
-
+`GET /city/population?city=Moscow&radius=12`
+```json
 {
   "error": {
     "description": "found 23 results, expected 1",
@@ -249,9 +246,9 @@ http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=Mo
 
 Result of `full_query` field should be used:
 
-```
-http://ec2-52-29-0-69.eu-central-1.compute.amazonaws.com/city/population?city=us,AL,moscow&radius=12
+`GET /city/population?city=us,AL,moscow&radius=12`
 
+```json
 {
   "population": 5806,
   "radius": 12,
