@@ -127,7 +127,7 @@ Instead of counting population by cities, [population density grid](http://sedac
 3. Cells are sorted by distance to city centre (with respect to cell shape distortion on given latitude)
 4. Population is computed then like this:
 
-```
+```javascript
 earthR = 6371
 Radius = 30
 // cell height. 0.0416666666667 is 2.5' in degrees
